@@ -2,7 +2,7 @@
 using CleanDDDTemplate.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanDDDTemplate.Application.Context
+namespace CleanDDDTemplate.Application.InfrastructureInterfaces.Context
 {
     public interface ICleanDDDTemplateDbContext
     {

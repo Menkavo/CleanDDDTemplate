@@ -1,5 +1,5 @@
-using CleanDDDTemplate.Application.Context;
 using CleanDDDTemplate.Application.DependencyInjection;
+using CleanDDDTemplate.Application.InfrastructureInterfaces.Context;
 using CleanDDDTemplate.Application.Services.ApplicationServices.Cache;
 using CleanDDDTemplate.Persistence.DependencyInjection;
 using System.Text.Json.Serialization;

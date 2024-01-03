@@ -1,4 +1,4 @@
-﻿using CleanDDDTemplate.Application.Context;
+﻿using CleanDDDTemplate.Application.InfrastructureInterfaces.Context;
 using CleanDDDTemplate.Application.Services.ApplicationServices.Cache;
 
 namespace CleanDDDTemplate.Application.Services.DomainServices.Demo

@@ -1,5 +1,5 @@
-﻿using CleanDDDTemplate.Application.Context;
-using CleanDDDTemplate.Application.Enums;
+﻿using CleanDDDTemplate.Application.Enums;
+using CleanDDDTemplate.Application.InfrastructureInterfaces.Context;
 using CleanDDDTemplate.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
