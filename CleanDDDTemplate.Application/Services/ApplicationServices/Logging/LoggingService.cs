@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Serilog;
 using Serilog.Exceptions;
-using System.Net.Http;
 
 namespace CleanDDDTemplate.Application.Services.ApplicationServices.Logging
 {

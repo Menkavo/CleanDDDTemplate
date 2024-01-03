@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CleanDDDTemplate.Domain.Models;
+﻿using CleanDDDTemplate.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CleanDDDTemplate.Persistence.Configurations
