@@ -5,32 +5,55 @@ namespace Common.ExtentionMethods
 {
     public static class ObjectHelper
     {
+        /// <summary>
+        /// Serilizes the object into a JSON string.
+        /// </summary>
+        /// <param name="source">The object being serilized.</param>
+        /// <returns>A JSON string representation of the object.</returns>
         public static string SerializeObject(this object source) => JsonConvert.SerializeObject(source);
 
+        /// <summary>
+        /// Serilizes the object into a JSON string with indented formatting.
+        /// </summary>
+        /// <param name="source">The object being serilized.</param>
+        /// <returns>An indented JSON string representation of the object.</returns>
         public static string SerializeObjectIndented(this object source) => JsonConvert.SerializeObject(source, Formatting.Indented);
 
+        /// <summary>
+        /// Deserilizes the specified JSON string into an object.
+        /// </summary>
+        /// <typeparam name="T">The type of the object.</typeparam>
+        /// <param name="source">The JSON string.</param>
+        /// <returns>The deserilized object from the JSON string.</returns>
         public static T DeserializeObject<T>(this string source) where T : class => JsonConvert.DeserializeObject<T>(source, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
         /// <summary>
-        /// Makes a clone of an object.
+        /// Makes a clone of the object.
         /// </summary>
-        /// <typeparam name="T">Type of the object.</typeparam>
-        /// <param name="source">The object that is being cloned.</param>
-        /// <returns></returns>
+        /// <typeparam name="T">The type of the object</typeparam>
+        /// <param name="source">The object to be cloned</param>
+        /// <returns>A cloned replica of the object.</returns>
         public static T CloneObject<T>(this T source) where T : class => JsonConvert.DeserializeObject<T>(
             JsonConvert.SerializeObject(source, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
 
         /// <summary>
         /// Compares 2 objects.
         /// </summary>
-        /// <typeparam name="T">Type of the objects being compared.</typeparam>
-        /// <param name="obj1">First object.</param>
-        /// <param name="obj2">Second object.</param>
-        /// <returns>True if values of all properties are equal.</returns>
+        /// <typeparam name="T">Type of the objects</typeparam>
+        /// <param name="obj1">First object</param>
+        /// <param name="obj2">Second object</param>
+        /// <returns>True if values of all properties of both objects are equal.</returns>
         public static bool IsIdenticalWith<T>(this T obj1, T obj2) where T : class =>
             JsonConvert.SerializeObject(obj1, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }) ==
             JsonConvert.SerializeObject(obj2, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
+        /// <summary>
+        /// Compares multiple objects.
+        /// </summary>
+        /// <typeparam name="T">Type of the objects</typeparam>
+        /// <param name="obj1">First object</param>
+        /// <param name="objects">Other objects</param>
+        /// <returns>True if the values of all properties of the first object is equal to another object. false if not.</returns>
         public static bool IsIdenticalWithAny<T>(this T obj1, params T?[] objects) => objects.Any(obj =>
         {
             var isIdentical = JsonConvert.SerializeObject(obj1, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }) ==
@@ -38,6 +61,13 @@ namespace Common.ExtentionMethods
             return isIdentical;
         });
 
+        /// <summary>
+        /// Compares multiple objects.
+        /// </summary>
+        /// <typeparam name="T">Type of the objects</typeparam>
+        /// <param name="obj1">First object</param>
+        /// <param name="objects">Other objects</param>
+        /// <returns>True if the values of all properties of the first object is equal to all other objects. false if not.</returns>
         public static bool IsIdenticalWithAll<T>(this T obj1, params T?[] objects) => objects.All(obj =>
         {
             var isIdentical = JsonConvert.SerializeObject(obj1, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }) ==
